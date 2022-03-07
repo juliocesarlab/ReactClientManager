@@ -4,9 +4,9 @@ export const CardsContainer = styled.div`
   width: 100%;
   gap: 1rem;
   display: grid;
-  place-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin-bottom: 4rem;
+  justify-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.35fr));
+  margin: 4rem 0rem;
 `
 
 export const ListHeading = styled.div`

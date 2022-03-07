@@ -40,7 +40,9 @@ export const ClientsListpage = () => {
             id={client.id} 
             name={client.name} 
             cel={client.cel} 
-            city={client.city}/>
+            city={client.city}
+            disable={client.disable}
+            />
         ))}
       </CardsContainer>
     </main>

@@ -11,6 +11,10 @@ export const ModalContextProvider = ({children}) => {
 
   const [modalTitle, setModalTitle] = useState('');
   const [clientModalId, setClientModalId] = useState();
+  const [clientModalName, setClientModalName] = useState();
+  const [clientModalCel, setClientModalCel] = useState();
+  const [clientModalCity, setClientModalCity] = useState();
+  const [clientModalDisabled, setClientModalDisabled] = useState();
   const [role, setRole] = useState('');
 
  
@@ -21,11 +25,18 @@ export const ModalContextProvider = ({children}) => {
         name,
         cel,
         city,
+        disabled,
         role,
         roleMessage,
       } = modalInfo
 
+      //client modal data
       setClientModalId(id)
+      setClientModalName(name)
+      setClientModalCel(cel)
+      setClientModalCity(city)
+      setClientModalDisabled(clientModalDisabled)
+
       setRole(role)
       setModalTitle(roleMessage)
     }
@@ -37,7 +48,20 @@ export const ModalContextProvider = ({children}) => {
   }
 
   return (
-    <ModalContext.Provider value={{modalIsOpen, setIsOpen, openModal, closeModal, setModalTitle, modalTitle, role, clientModalId}}>
+    <ModalContext.Provider value={
+      {modalIsOpen,
+       setIsOpen, 
+       openModal, 
+       closeModal,
+       setModalTitle, 
+       modalTitle, 
+       role, 
+       clientModalId,
+       clientModalName,
+       clientModalCel,
+       clientModalCity,
+       clientModalDisabled
+       }}>
       {children}  
     </ModalContext.Provider>
   )

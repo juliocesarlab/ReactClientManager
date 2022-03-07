@@ -6,7 +6,7 @@ import style from './style.css'
 
 import { useToggleButton } from '../../Hooks/useToggleButton.jsx'
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ import { inputsCheck } from '../../services/inputsCheck.js'
 import { orderArr } from '../../services/orderArr.js'
 
 import { ToggleButton } from '../ToggleButton/ToggleButton.jsx';
+import { useEffect } from 'react/cjs/react.production.min';
 
 Modal.setAppElement('#root');
 
@@ -26,17 +27,35 @@ export const FormModal = () => {
   const [city, setCity] = useState('')
 
   const { clients, setClients } = useClients()
-  const { toggleValue } = useToggleButton()
+  const { toggleValue, setToggleValue } = useToggleButton()
 
   const {
     modalIsOpen, 
     closeModal, 
-    afterOpenModal,
     role,
     setModalTitle,
     modalTitle,
-    clientModalId, 
-  } =  useModal()
+    clientModalId,
+    clientModalName,
+    clientModalCel,
+    clientModalCity,
+    clientModalDisabled 
+  } = useModal()
+
+  async function afterOpenModal() {
+    if (role === 'edit') {
+      setName(clientModalName)
+      setCity(clientModalCity)
+      setCel(clientModalCel)
+      setToggleValue(!clientModalDisabled)
+    } else {
+      setName('')
+      setCity('')
+      setCel('')
+      setToggleValue('')
+    }
+ 
+  }
 
   async function handleAddClient() {
     try {
@@ -60,27 +79,30 @@ export const FormModal = () => {
       }
   }
 
-  async function handleEditClient() {
-    const id = clientModalId
-    try {
-      await app.put('client/edit', {
-        id,
-        name,
-        cel,
-        city,
-        disabled: !toggleValue
+   async function handleEditClient() {
+    
+
+      const id = clientModalId
+      try {
+        await app.put('client/edit', {
+         id,
+         name,
+         cel,
+         city,
+         disabled: !toggleValue
       }
     )
 
-    const filteredClients = clients.filter(client => client.id != id && client.disabled === false)
-    const addedClient = [...filteredClients, {id, name, cel , city}]
-    console.log(addedClient)
+    const filteredClients = clients.filter(client => client.id !== id)
+    
+    const addedClient = toggleValue 
+    ? [...filteredClients, {id, name, cel , city}]
+    : [...filteredClients]
     const orderedClients = orderArr(addedClient)
 
     setClients(orderedClients)
-    setModalTitle("Edite "+name)
-      
-    
+    setModalTitle(name)
+    closeModal()
 
     toast.success("Cliente alterado !")
     }catch(err) {

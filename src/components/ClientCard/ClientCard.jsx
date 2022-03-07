@@ -5,7 +5,7 @@ import { FaCity } from 'react-icons/fa'
 
 import { useModal } from '../../Hooks/useModal.jsx'
 
-export const ClientCard = ({id, name, cel, city}) => {
+export const ClientCard = ({id, name, cel, city, disable}) => {
 
   const { 
     modalIsOpen, 
@@ -21,8 +21,9 @@ export const ClientCard = ({id, name, cel, city}) => {
       name,
       cel,
       city,
+      disable,
       role: "edit",
-      roleMessage: "Edite " + name
+      roleMessage: name
     }
     openModal(modalInfo)
   }
