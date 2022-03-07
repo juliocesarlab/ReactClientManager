@@ -35,7 +35,12 @@ export const ClientsListpage = () => {
       </ListHeading>
       <CardsContainer>
         {search && search.map(client => (
-          <ClientCard key={client.id} id={client.id} name={client.name} cel={client.cel} city={client.city}/>
+          <ClientCard 
+            key={client.id} 
+            id={client.id} 
+            name={client.name} 
+            cel={client.cel} 
+            city={client.city}/>
         ))}
       </CardsContainer>
     </main>

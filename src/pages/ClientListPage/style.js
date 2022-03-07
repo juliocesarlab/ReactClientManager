@@ -12,6 +12,8 @@ export const CardsContainer = styled.div`
 export const ListHeading = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
 
   input {
     width: 100%;
@@ -23,5 +25,6 @@ export const ListHeading = styled.div`
     padding-left: .5rem;
     font-size: 0.9rem;
     font-weight: 400;
+    margin-bottom: 2rem;
   }
 `
