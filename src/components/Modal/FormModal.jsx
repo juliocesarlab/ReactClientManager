@@ -42,6 +42,15 @@ export const FormModal = () => {
     clientModalDisabled 
   } = useModal()
 
+   function celMask(e) {
+    
+    let typed =  e.target.value
+    typed = typed.replace(/(^\d{2})(\d)/, "($1) $2");
+    typed = typed.replace(/(\d{1})(\d{4})(\d{4}$)/, "$1 $2-$3");
+
+    setCel(typed)
+  }
+
   async function afterOpenModal() {
     if (role === 'edit') {
       setName(clientModalName)
@@ -154,9 +163,9 @@ export const FormModal = () => {
             <input type="text"  
               id="celular" 
               placeholder='(34) 9 9999-9999' 
-              
+              maxLength='15'
               value={cel}
-              onChange={(e) => setCel(e.target.value)}
+              onChange={(e) => celMask(e)}
               />
           </div>
          
