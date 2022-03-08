@@ -138,36 +138,46 @@ export const FormModal = () => {
         </div>
         <form>
           
-          <label htmlFor="nome">Nome*</label>
-          <input type="text" 
-            id="nome" 
-            placeholder='Nome' 
-            
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            />
-          <label htmlFor="celular">Celular*</label>
-          <input type="text"  
-            id="celular" 
-            placeholder='(34) 9 9999-9999' 
-            
-            value={cel}
-            onChange={(e) => setCel(e.target.value)}
-            />
+          <div className="input-control">
+            <label htmlFor="nome">Nome*</label>
+            <input type="text" 
+              id="nome" 
+              placeholder='Nome' 
+              
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              />  
+          </div>
+
+          <div className="input-control">
+            <label htmlFor="celular">Celular*</label>
+            <input type="text"  
+              id="celular" 
+              placeholder='(34) 9 9999-9999' 
+              
+              value={cel}
+              onChange={(e) => setCel(e.target.value)}
+              />
+          </div>
+         
+         <div className="input-control">
           <label htmlFor="cidade">Cidade*</label>
-          <select value={city} onChange={(e) => setCity(e.target.value)}>
-            <option defaultValue>Escolha uma cidade</option>
-            <option value="Uberaba">Uberaba</option>
-            <option value="Belo Horizonte">Belo Horizonte</option>
-            <option value="São Paulo">São Paulo</option>
-            <option value="Brasilia">Brasilia</option>
-            <option value="Curitiba">Curitiba</option>
-            <option value="Curitiba"></option>
-          </select>
+            <select value={city} onChange={(e) => setCity(e.target.value)}>
+              <option defaultValue>Escolha uma cidade</option>
+              <option value="Uberaba">Uberaba</option>
+              <option value="Belo Horizonte">Belo Horizonte</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Brasilia">Brasilia</option>
+              <option value="Curitiba">Curitiba</option>
+              <option value="Curitiba"></option>
+            </select>
+          </div>
           {role === 'edit' && (
             <>
+              <div className="input-control">
               <label>Cliente ativo ?</label> 
               <ToggleButton className={toggleValue ? 'active' : ''}/>
+              </div>
             </>
           )}
           <button type='submit' onClick={() => handleSubmit()}>Enviar</button>

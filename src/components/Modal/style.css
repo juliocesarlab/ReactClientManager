@@ -3,30 +3,40 @@
   height: 500px;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   padding: 2rem;
   
   color: #fff;
   background: rgb(245,134,52);
-  background: linear-gradient(260deg, rgba(245,134,52,1) 0%, rgba(245,134,52,1) 0%, rgba(235,50,55,1) 100%);
-  
+  background: linear-gradient(260deg, rgba(245,134,52,.8) 0%, rgba(245,134,52,.8) 0%, rgba(235,50,55,.8) 100%);  
   border-radius: 1rem;
   position: relative;
-  outline: none;
+  
 }
 
 .Modal form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
   width: 100%;
-  margin-top: 2.2rem;
+  margin-top: 3rem;
+
 }
 
 .Modal label {
-  margin-bottom: -0.5rem;
   font-weight: 400;
+}
+
+.Modal .input-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Modal .input-control + .input-control {
+  margin-top: 0.5rem;
 }
 
 .Modal input {
@@ -38,6 +48,7 @@
   outline: none;
 }
 
+
 .Modal select {
   border: 0;
   background: 0;
@@ -46,22 +57,17 @@
   border-radius: 0.5rem;
   background: #fff;
   padding: 0 1rem;
-
-
-  
 }
 
 .Modal .heading {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   max-height: 2rem;
-  
 }
 
 .Modal .heading h2 {
   font-size: 1.6rem;
-  
   font-weight: 700;
 }
 
@@ -75,6 +81,10 @@
 
   border-radius: 0px 10px 2px 10px;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .Modal .heading button:hover {
@@ -88,20 +98,17 @@
   
   background: rgba(0, 0,0 , 0.15);
   
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.6);
   filter: brightness(1.2);
   font-size: 0.9rem;
   color: #fff;
   transition: box-shadow 0.2s;
-  margin-top: 2rem;  
+  margin-top: 4rem;  
 
   cursor: pointer;
 }
 
 .Modal button:hover {
   filter: brightness(0.95);
-  box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.45);
-  
 }
 
 .Overlay {
@@ -110,7 +117,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0,0 , 0.75);
+    background-color: rgba(0, 0, 0, 0.95);
 
     display: flex;
     justify-content: center;

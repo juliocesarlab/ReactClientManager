@@ -9,8 +9,11 @@ export const ClientsListpage = () => {
   
   const {clients, setClients} = useContext(ClientsContext)
   const[search, setSearch] = useState([...clients])
-  
   const[searchInput, setSearchInput] = useState('')
+
+  function modalTrigger() {
+    document.querySelector('.link').click()
+  }
 
   useEffect(async () => {
     if (searchInput == '' || !searchInput) setClients(clients)
@@ -34,7 +37,13 @@ export const ClientsListpage = () => {
           />
       </ListHeading>
       <CardsContainer>
-        {search && search.map(client => (
+        {clients.length === 0 ? 
+          <h1 className='noClients'>Ainda não há clientes cadastrados. 
+          <span onClick={() => modalTrigger()}> Faça seu primeiro cadastro</span></h1> 
+          : ''
+        }
+        {
+        search && search.map(client => (
           <ClientCard 
             key={client.id} 
             id={client.id} 

@@ -1,15 +1,15 @@
 import styled from "styled-components"
 
 export const CardWrapper = styled.div`
-    width: 320px;
+    width: 100%;
+    min-width: 280px;
     height: 120px;
     padding: 1rem;
     
     
     background: rgb(245,134,52);
     background: linear-gradient(200deg, rgba(245,134,52,1) 15%, rgba(245,134,52,1) 0%, rgba(235,50,55,1) 100%);
-    color: var(--black);
-
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
